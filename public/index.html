@@ -44,7 +44,7 @@ async function cargarDatos() {
   const alumnos = await fetch('/alumnos').then(res => res.json());
   const ventasTable = document.getElementById('ventas-table');
   alumnos.forEach(alumnos => {
-    ventasTable.innerHTML += `<tr><td>${alumnos.Nombre}</td><td>${alumnos.dni}</td><td>${alumnos.descripcion}</td></tr>`;
+    ventasTable.innerHTML += `<tr><td>${alumnos.nombre}</td><td>${alumnos.dni}</td><td>${alumnos.descripcion}</td></tr>`;
   });
 
 }
