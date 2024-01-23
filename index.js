@@ -35,11 +35,11 @@ app.get('/alumnos', async (req, res) => {
 
 
 // Endpoint para agregar una venta
-app.post('/alumno', async (req, res) => {
-  const nuevaAlumno = req.body; // Asegúrate de validar y limpiar esta entrada
-  const alumnos = await leerDatos('alumno');
-  alumno.push(nuevaAlumnno);
-  await escribirDatos('alumno', alumno);
+app.post('/alumnos', async (req, res) => {
+  const nuevaAlumnos = req.body; // Asegúrate de validar y limpiar esta entrada
+  const alumnos = await leerDatos('alumnos');
+  alumnos.push(nuevaAlumnno);
+  await escribirDatos('alumnos', alumnos);
   res.status(201).send('Alumnno agregado');
 });
 
