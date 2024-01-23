@@ -29,7 +29,7 @@ async function escribirDatos(archivo, datos) {
 
 // Endpoint para obtener los ingredientes
 app.get('/alumnos', async (req, res) => {
-  const ingredientes = await leerDatos('alumnos');
+  const alumnos = await leerDatos('alumnos');
   res.json(alumnos);
 });
 
@@ -37,7 +37,7 @@ app.get('/alumnos', async (req, res) => {
 // Endpoint para agregar una venta
 app.post('/alumno', async (req, res) => {
   const nuevaAlumno = req.body; // Asegúrate de validar y limpiar esta entrada
-  const ventas = await leerDatos('alumno');
+  const alumnos = await leerDatos('alumno');
   ventas.push(nuevaAlumnno);
   await escribirDatos('alumno', alumno);
   res.status(201).send('Alumnno agregado');
