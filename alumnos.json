@@ -1,0 +1,22 @@
+[
+  {
+    "producto": "Gean Ceviche 20",
+    "precio": 0,
+    "fecha": "2023-12-31"
+  },
+  {
+    "producto": "Caja",
+    "precio": 111,
+    "fecha": "2023-12-30"
+  },
+  {
+    "producto": "2 Ceviches Mixtos",
+    "precio": 40,
+    "fecha": "2023-12-31"
+  },
+  {
+    "producto": "3 Arroz Con Langostinos",
+    "precio": 60,
+    "fecha": "2023-12-31"
+  }
+]
