@@ -26,48 +26,24 @@
 
   </div>
   <div class="container">
-    <h2>Ingredientes</h2>
-    <table id="ingredientes-table">
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Costo</th>
-      </tr>
-      <!-- Los ingredientes se cargarán aquí -->
-    </table>
-
-    <h2>Ventas</h2>
+     <h2>Lista</h2>
     <table id="ventas-table">
       <tr>
-        <th>ID</th>
-        <th>Producto</th>
-        <th>Precio</th>
-        <th>Fecha</th>
-      </tr>
-      <!-- Las ventas se cargarán aquí -->
-    </table>
-
-    <h2>Gastos</h2>
-    <table id="gastos-table">
-      <tr>
-        <th>ID</th>
+        <th>Nombre</th>
+        <th>DNI</th>
         <th>Descripción</th>
-        <th>Monto</th>
-        <th>Fecha</th>
       </tr>
-      <!-- Los gastos se cargarán aquí -->
+      <!-- Los alumnos se cargarán aquí -->
     </table>
-
-
-
+    
 <script>
 // Función para cargar y mostrar los datos en la tabla
 async function cargarDatos() {
 
   // Cargar ventas
-  const ventas = await fetch('/alumnos').then(res => res.json());
+  const alumnos = await fetch('/alumnos').then(res => res.json());
   const ventasTable = document.getElementById('ventas-table');
-  ventas.forEach(venta => {
+  alumnos.forEach(alumnos => {
     ventasTable.innerHTML += `<tr><td>${alumnos.id}</td><td>${alumnos.Nombre}</td><td>S/${alumnos.dni}</td><td>${alumnos.descripcion}</td></tr>`;
   });
 
@@ -76,29 +52,13 @@ async function cargarDatos() {
 // Función para añadir una venta
 document.getElementById('form-venta').onsubmit = async function(event) {
   event.preventDefault();
-  const producto = document.getElementById('producto').value;
-  const precio = parseFloat(document.getElementById('precio').value);
-  const fecha = document.getElementById('fecha-venta').value;
-  const respuesta = await fetch('/ventas', {
+  const nombre = document.getElementById('nombre').value;
+  const dni = parseFloat(document.getElementById('dni').value);
+  const descripcion = document.getElementById('descripcion').value;
+  const respuesta = await fetch('/alumnos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ producto, precio, fecha })
-  });
-  if (respuesta.ok) {
-    window.location.reload(); // Recargar la página para actualizar la lista
-  }
-};
-
-// Función para añadir un gasto
-document.getElementById('form-gasto').onsubmit = async function(event) {
-  event.preventDefault();
-  const descripcion = document.getElementById('descripcion').value;
-  const monto = parseFloat(document.getElementById('monto').value);
-  const fecha = document.getElementById('fecha-gasto').value;
-  const respuesta = await fetch('/gastos', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ descripcion, monto, fecha })
   });
   if (respuesta.ok) {
     window.location.reload(); // Recargar la página para actualizar la lista
