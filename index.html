@@ -63,32 +63,14 @@
 <script>
 // Función para cargar y mostrar los datos en la tabla
 async function cargarDatos() {
-  // Cargar ingredientes
-  const ingredientes = await fetch('/ingredientes').then(res => res.json());
-  const ingredientesTable = document.getElementById('ingredientes-table');
-  ingredientes.forEach(ing => {
-    ingredientesTable.innerHTML += `<tr><td>${ing.id}</td><td>${ing.nombre}</td><td>S/${ing.costo}</td></tr>`;
-  });
 
   // Cargar ventas
-  const ventas = await fetch('/ventas').then(res => res.json());
+  const ventas = await fetch('/alumnos').then(res => res.json());
   const ventasTable = document.getElementById('ventas-table');
   ventas.forEach(venta => {
-    ventasTable.innerHTML += `<tr><td>${venta.id}</td><td>${venta.producto}</td><td>S/${venta.precio}</td><td>${venta.fecha}</td></tr>`;
+    ventasTable.innerHTML += `<tr><td>${alumnos.id}</td><td>${alumnos.Nombre}</td><td>S/${alumnos.dni}</td><td>${alumnos.descripcion}</td></tr>`;
   });
 
-  // Cargar gastos
-  const gastos = await fetch('/gastos').then(res => res.json());
-  const gastosTable = document.getElementById('gastos-table');
-  gastos.forEach(gasto => {
-    gastosTable.innerHTML += `<tr><td>${gasto.id}</td><td>${gasto.descripcion}</td><td>S/${gasto.monto}</td><td>${gasto.fecha}</td></tr>`;
-  });
-
-  // Calcular total en caja
-  const totalVentas = ventas.reduce((total, venta) => total + venta.precio, 0);
-  const totalGastos = gastos.reduce((total, gasto) => total + gasto.monto, 0);
-  const totalCaja = totalVentas - totalGastos;
-  document.getElementById('total-caja').textContent = `S/${totalCaja.toFixed(2)}`;
 }
 
 // Función para añadir una venta
