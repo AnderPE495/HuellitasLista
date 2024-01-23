@@ -38,7 +38,7 @@ app.get('/alumnos', async (req, res) => {
 app.post('/alumno', async (req, res) => {
   const nuevaAlumno = req.body; // Asegúrate de validar y limpiar esta entrada
   const alumnos = await leerDatos('alumno');
-  ventas.push(nuevaAlumnno);
+  alumno.push(nuevaAlumnno);
   await escribirDatos('alumno', alumno);
   res.status(201).send('Alumnno agregado');
 });
